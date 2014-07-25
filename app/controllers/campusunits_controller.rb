@@ -30,7 +30,8 @@ class CampusunitsController < ApplicationController
   end
 
   def create
-    @campusunit = Campusunit.new(params[:campusunit])
+    #@campusunit = Campusunit.new(params[:campusunit])
+    @campusunit = Campusunit.new(campusunit_params[:campusunit])
     
     respond_to do |format|
       if @campusunit.save
@@ -74,6 +75,13 @@ class CampusunitsController < ApplicationController
       format.html { redirect_to campusunits_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  # RAILS 4: necessario para usar strong_parameters
+  def campusunit_params
+    params.require(:campusunit).permit(:name, :address)
   end
 
 end
