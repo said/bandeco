@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day: 2014-07-25
+  restaurant_id: 
+  meal_id: 
+  options: MyText
+  kcal: MyString
+
+two:
+  day: 2014-07-25
+  restaurant_id: 
+  meal_id: 
+  options: MyText
+  kcal: MyString

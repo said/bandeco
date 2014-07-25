@@ -1,0 +1,46 @@
+<h1>Places#show</h1>
+<p>Find me in app/views/places/show.html.erb</p>
+
+<p>
+  <b>Campus:</b>
+  <%= @place.placescategory.campusunit.name %>
+</p>
+
+<p>
+  <b>Categoria:</b>
+  <%= @place.placescategory.name %>
+</p>
+
+<p>
+  <b>Nome:</b>
+  <%= @place.name %>
+</p>
+
+<p>
+  <b>Endereço:</b>
+  <%= @place.address %>
+</p>
+
+<p>
+  <b>Telefone:</b>
+  <%= @place.tel %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @place.latitude %>
+</p>
+
+<p>
+  <b>Logitude:</b>
+  <%= @place.longitude %>
+</p>
+
+<p>
+  <b>Meta-tags:</b>
+  <%= @place.metatags %>
+</p>
+ 
+<%= link_to 'Editar', edit_place_path(@place) %> | 
+<%= link_to 'Remover', @place, :confirm => 'Tem certeza?', :method => :delete %> | 
+<%= link_to 'Voltar', places_path %> 

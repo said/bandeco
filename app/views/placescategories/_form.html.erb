@@ -1,0 +1,33 @@
+<%= form_for(@placescategory) do |f| %>
+	<% if @placescategory.errors.any? %>
+	<div id="explicacao_erro">
+		<h2>Devido a estes <%= pluralize(@placescategory.errors.count, "error") %> 
+			esta nova categoria de local não pode ser salva:</h2>
+		
+		<ul>
+			<% @placescategory.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	
+	<div class="campo_form">
+		<%= f.label :campusunit %><br />
+		<% @campusunit.each_with_index do |r, i| %>
+			<%= f.radio_button(:campusunit_id, r.id, :checked => (i == 0 or r.id == @placescategory.campusunit_id)? true:false ) %>
+			<%= r.name %><br /> 
+		<% end %>
+	</div>
+	<div class="campo_form">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	<div class="campo_form">
+		<%= f.label :abbreviation %><br />
+		<%= f.text_field :abbreviation %>
+	</div>
+	<div class="botao_enviar">
+		<%= f.submit %>
+	</div>
+<% end %>

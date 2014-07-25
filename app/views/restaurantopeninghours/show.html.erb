@@ -1,0 +1,39 @@
+<h1>Restaurantrestaurantopeninghours#show</h1>
+<p>Find me in app/views/restaurantrestaurantopeninghours/show.html.erb</p>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Restaurante:</b>
+  <%= @restaurantopeninghour.restaurant.name %>
+</p>
+
+<p>
+  <b>Refeição:</b>
+  <%= @restaurantopeninghour.meal.name %>
+</p>
+
+<p>
+  <b>Dia da semana:</b>
+  	<%= "Segunda-Feira" if @restaurantopeninghour.wday == 1	%> 
+	<%= "Terça-Feira" 	if @restaurantopeninghour.wday == 2 %>
+	<%= "Quarta-Feira" 	if @restaurantopeninghour.wday == 3 %>
+	<%= "Quinta-Feira" 	if @restaurantopeninghour.wday == 4 %>
+	<%= "Sexta-Feira" 	if @restaurantopeninghour.wday == 5	%>
+	<%= "Sábado" 		if @restaurantopeninghour.wday == 6 %>
+	<%= "Domingo" 		if @restaurantopeninghour.wday == 0	%> 
+</p>
+
+<p>
+  <b>Abre:</b>
+  <%= @restaurantopeninghour.open %>
+</p>
+
+<p>
+  <b>Fecha:</b>
+  <%= @restaurantopeninghour.close %>
+</p>
+ 
+<%= link_to 'Editar', edit_restaurantopeninghour_path(@restaurantopeninghour) %> | 
+<%= link_to 'Remover', @restaurantopeninghour, :confirm => 'Tem certeza?', :method => :delete %> | 
+<%= link_to 'Voltar', restaurantopeninghours_path %> 

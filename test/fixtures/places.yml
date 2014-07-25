@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  placescategory_id: 
+  name: MyString
+  address: MyString
+  tel: MyString
+  latitude: MyString
+  longitude: MyString
+  metatags: MyText
+
+two:
+  placescategory_id: 
+  name: MyString
+  address: MyString
+  tel: MyString
+  latitude: MyString
+  longitude: MyString
+  metatags: MyText

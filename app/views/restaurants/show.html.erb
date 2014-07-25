@@ -1,0 +1,76 @@
+<h1><center><%= @restaurant.name %></center></h1>
+<h2><center>Endereço: <%= @restaurant.address %></center></h2>
+<h2><center>Informações: <%= @restaurant.tel %></center></h2>
+<center>
+<marquee id="barra_visite_cozinha" scrollamount="4" scrolldelay="45" height="25" width="253" align="center"> VISITE NOSSA COZINHA </marquee>
+</center>
+<% if @menus.empty? %>
+
+	<h2><center>Não há cardápio para esta semana neste restaurante.</center></h2>
+
+<% else %>
+
+	<p><center>Refeições da semana de <%=@monday.strftime "%d/%m/%Y"%> a <%=@sunday.strftime "%d/%m/%Y"%></center></p> 
+
+	<% cafe_da_manha = @menus.select{ |menu| menu.meal_id.eql? 1 }.length %>
+	<% almoco = @menus.select{ |menu| menu.meal_id.eql? 2 }.length %>
+	<% jantar = @menus.select{ |menu| menu.meal_id == 3 }.length %>
+	
+	<div align="center">
+	<table border="1">
+		<tr>
+			<th>Data</th>
+			<% if cafe_da_manha > 0 %>	<th>Café da Manhã</th> 	<% end %>
+			<% if almoco > 0 %>			<th>Almoço</th> 		<% end %>
+			<% if jantar > 0 %>			<th>Jantar</th>			<% end %>
+		</tr>
+		
+		<% (@monday..@sunday).each do |day| %>
+		<tr>
+			<td width="100px" valign="top">
+				<%= "Segunda-Feira" if day.wday == 1	%> 
+				<%= "Terça-Feira" 	if day.wday == 2	%>
+				<%= "Quarta-Feira" 	if day.wday == 3	%>
+				<%= "Quinta-Feira" 	if day.wday == 4 	%>
+				<%= "Sexta-Feira" 	if day.wday == 5	%>
+				<%= "Sábado" 		if day.wday == 6 	%>
+				<%= "Domingo" 		if day.wday == 0	%>
+			</td>
+			<% (1..3).each do |meal| %>
+				<% if (meal == 1 and cafe_da_manha > 0) or 
+					  (meal == 2 and almoco > 0) or 
+					  (meal == 3 and jantar > 0)   %>
+					<td width="300px" height="150px" valign="top">
+						<% cardapio = @menus.select{ |menu| menu.day == day and menu.meal_id == meal} %>
+						<% if cardapio.length > 0 %>
+							<pre class="cardapio_opcoes"><%= cardapio.last.options %></pre>
+							<% if cardapio.last.kcal != "" %>
+							<p class="cardapio_kcal">Valor calórico de 1 refeição: <%= cardapio.last.kcal %> kcal</p>
+							<% end%>
+							<%= link_to 'Editar', edit_menu_path(cardapio.last.id) %> 
+						<% end %>
+					</td>
+				<% end %>
+			<% end %>
+		</tr>
+		<% end %>
+	
+	</table>
+	</div>
+<% end %>
+
+
+<center>
+	<h3>OBSERVAÇÃO: Cardápio Sujeito a Modificação Sem Prévio Aviso!</h3>
+	<br />
+	<p>Este cardápio é parte integrante da SAS On-Line!</p>
+	<a href="http://www.usp.br/sas" target="_self">www.usp.br/sas</a>
+	<p>e será atualizado todas as semanas.</p>
+	<br><br>
+	<p>Webdesign:</p>
+	<a href="mailto:beto@usp.br">Roberto Nunes</a>
+</center>
+
+<%= link_to 'Editar', edit_restaurant_path(@restaurant) %> | 
+<%= link_to 'Remover', @restaurant, :confirm => 'Tem certeza?', :method => :delete %> | 
+<%= link_to 'Voltar', restaurants_path %>

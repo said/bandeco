@@ -1,0 +1,49 @@
+<%= form_for(@place) do |f| %>
+	<% if @place.errors.any? %>
+	<div id="explicacao_erro">
+		<h2>Devido a estes <%= pluralize(@place.errors.count, "error") %> 
+			este novo local não pode ser salvo:</h2>
+		
+		<ul>
+			<% @place.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	
+	<div class="campo_form">
+		<%= f.label :placescategory %><br />
+		<% @placescategories.each_with_index do |r, i| %>
+			<%= f.radio_button(:placescategory_id, r.id, :checked => (i == 0 or r.id == @place.placescategory_id)? true:false ) %>
+			<%= r.name %><br /> 
+		<% end %>
+	</div>
+	<div class="campo_form">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	<div class="campo_form">
+		<%= f.label :address %><br />
+		<%= f.text_field :address %>
+	</div>
+	<div class="campo_form">
+		<%= f.label :tel %><br />
+		<%= f.text_field :tel %>
+	</div>
+	<div class="campo_form">
+		<%= f.label :latitude %><br />
+		<%= f.text_field :latitude %>
+	</div>
+	<div class="campo_form">
+		<%= f.label :longitude %><br />
+		<%= f.text_field :longitude %>
+	</div>
+	<div class="campo_form">
+		<%= f.label :metatags %><br />
+		<%= f.text_area :metatags %>
+	</div>
+	<div class="botao_enviar">
+		<%= f.submit %>
+	</div>
+<% end %>

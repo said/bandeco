@@ -1,0 +1,26 @@
+<%= form_for(@meal) do |f| %>
+	<% if @meal.errors.any? %>
+	<div id="explicacao_erro">
+		<h2>Devido a estes <%= pluralize(@meal.errors.count, "error") %> 
+			esta nova refeição não pode ser salva:</h2>
+		
+		<ul>
+			<% @meal.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	
+	<div class="campo_form">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	<div class="campo_form">
+		<%= f.label :cost %><br />
+		<%= f.text_field :cost %>
+	</div>
+	<div class="botao_enviar">
+		<%= f.submit %>
+	</div>
+<% end %>

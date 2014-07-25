@@ -1,0 +1,23 @@
+<h1>Placescategories#show</h1>
+<p>Find me in app/views/placescategories/show.html.erb</p>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Campus:</b>
+  <%= @placescategory.campusunit.name %>
+</p>
+
+<p>
+  <b>Categoria:</b>
+  <%= @placescategory.name %>
+</p>
+
+<p>
+  <b>Abreviação:</b>
+  <%= @placescategory.abbreviation %>
+</p>
+ 
+<%= link_to 'Editar', edit_placescategory_path(@placescategory) %> | 
+<%= link_to 'Remover', @placescategory, :confirm => 'Tem certeza?', :method => :delete %> | 
+<%= link_to 'Voltar', placescategories_path %> 

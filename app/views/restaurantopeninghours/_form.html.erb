@@ -1,0 +1,54 @@
+<%= form_for(@restaurantopeninghour) do |f| %>
+	<% if @restaurantopeninghour.errors.any? %>
+	<div id="explicacao_erro">
+		<h2>Devido a estes <%= pluralize(@restaurantopeninghour.errors.count, "error") %> 
+			este novo horário não pode ser salvo:</h2>
+		
+		<ul>
+			<% @restaurantopeninghour.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	
+	<div class="campo_form">
+		<%= f.label :restaurant %><br />
+		<% @restaurants.each_with_index do |r, i| %>
+			<%= f.radio_button(:restaurant_id, r.id, :checked => (i == 0 or r.id == @restaurantopeninghour.restaurant_id)? true:false ) %>
+			<%= r.name %><br /> 
+		<% end %>
+	</div>
+	<div class="campo_form">
+		<%= f.label :meal %><br />
+		<% @meals.each_with_index do |m, i| %>
+			<%= f.radio_button(:meal_id, m.id, :checked => ( i == 0 or m.id == @restaurantopeninghour.meal_id)? true:false ) %>
+			<%= m.name %><br /> 
+		<% end %>
+	</div>
+	<div class="campo_form">
+		<%= f.label :wday %><br />
+		<% (0..6).each_with_index do |wd, i| %>
+			<%= f.radio_button(:wday, wd, :checked => ( i == 0 or wd == @restaurantopeninghour.wday)? true:false ) %>
+			<%= "Segunda-Feira" if wd == 1	%> 
+			<%= "Terça-Feira" 	if wd == 2 	%>
+			<%= "Quarta-Feira" 	if wd == 3 	%>
+			<%= "Quinta-Feira" 	if wd == 4 	%>
+			<%= "Sexta-Feira" 	if wd == 5	%>
+			<%= "Sábado" 		if wd == 6 	%> 
+			<%= "Domingo" 		if wd == 0	%>
+			<br />
+		<% end %>
+	</div>
+	<div class="campo_form">
+		<%= f.label :open %><br />
+		<%= f.text_field :open %>
+	</div>
+	<div class="campo_form">
+		<%= f.label :close %><br />
+		<%= f.text_field :close %>
+	</div>
+	<div class="botao_enviar">
+		<%= f.submit %>
+	</div>
+<% end %>

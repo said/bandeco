@@ -1,0 +1,43 @@
+<h1>Menuscomments#show</h1>
+<p>Find me in app/views/menuscomments/show.html.erb</p>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Restaurante:</b>
+  <%= @menuscomment.menu.restaurant.name %>
+</p>
+
+<p>
+  <b>Data:</b>
+  <%= @menuscomment.menu.day %>
+</p>
+
+<p>
+  <b>Refeição:</b>
+  <%= @menuscomment.menu.meal.name %>
+</p>
+ 
+<p>
+  <b>Opções:</b>
+  <pre class="cardapio_opcoes"><%= @menuscomment.menu.options %></pre>
+</p>
+
+<p>
+  <b>Valor calórico de 1 refeição:</b>
+  <%= @menuscomment.menu.kcal %>
+</p>
+
+<p>
+  <b>Usuário:</b>
+  <%= @menuscomment.commenter %>
+</p>
+
+<p>
+  <b>Comentário:</b>
+  <%= @menuscomment.message %>
+</p>
+ 
+<%= link_to 'Editar', edit_menuscomment_path(@menuscomment) %> | 
+<%= link_to 'Remover', @menuscomment, :confirm => 'Tem certeza?', :method => :delete %> | 
+<%= link_to 'Voltar', menuscomments_path %> 

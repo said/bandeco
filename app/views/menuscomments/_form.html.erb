@@ -1,0 +1,30 @@
+<%= form_for(@menuscomment) do |f| %>
+	<% if @menuscomment.errors.any? %>
+	<div id="explicacao_erro">
+		<h2>Devido a estes <%= pluralize(@menuscomment.errors.count, "error") %> 
+			este novo comentário não pode ser salvo:</h2>
+		
+		<ul>
+			<% @menuscomment.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	
+	<div class="campo_form">
+		<%= f.label :menu_id %><br />
+		<%= f.text_field :menu_id %>
+	</div>
+	<div class="campo_form">
+		<%= f.label :commenter %><br />
+		<%= f.text_field :commenter %>
+	</div>
+	<div class="campo_form">
+		<%= f.label :message %><br />
+		<%= f.text_field :message %>
+	</div>
+	<div class="botao_enviar">
+		<%= f.submit %>
+	</div>
+<% end %>

@@ -1,0 +1,39 @@
+<h1>Menus#show</h1>
+<p>Find me in app/views/menus/show.html.erb</p>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Restaurante:</b>
+  <%= @menu.restaurant.name %>
+</p>
+
+<p>
+  <b>Data:</b>
+  <%= @menu.day %> 
+    <%= "Segunda-Feira" if @menu.day.wday == 1	%> 
+	<%= "Terça-Feira" 	if @menu.day.wday == 2 	%>
+	<%= "Quarta-Feira" 	if @menu.day.wday == 3 	%>
+	<%= "Quinta-Feira" 	if @menu.day.wday == 4 	%>
+	<%= "Sexta-Feira" 	if @menu.day.wday == 5	%>
+	<%= "Sábado" 		if @menu.day.wday == 6 	%>
+	<%= "Domingo" 		if @menu.day.wday == 0	%> 
+</p>
+
+<p>
+  <b>Refeição:</b>
+  <%= @menu.meal.name %>
+</p>
+ 
+<p>
+  <b>Opções:</b>
+  <pre class="cardapio_opcoes"><%= @menu.options %></pre>
+</p>
+
+<p>
+  <b>Valor calórico de 1 refeição: <%= @menu.kcal %> kcal</b>
+</p>
+ 
+<%= link_to 'Editar', edit_menu_path(@menu) %> | 
+<%= link_to 'Remover', @menu, :confirm => 'Tem certeza?', :method => :delete %> | 
+<%= link_to 'Voltar', menus_path %> 

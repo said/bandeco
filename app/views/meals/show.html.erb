@@ -1,0 +1,18 @@
+<h1>Meals#show</h1>
+<p>Find me in app/views/meals/show.html.erb</p>
+
+<p id="notice"><%= notice %></p>
+ 
+<p>
+  <b>Nome:</b>
+  <%= @meal.name %>
+</p>
+ 
+<p>
+  <b>Custo:</b>
+  <%= @meal.cost %>
+</p>
+ 
+<%= link_to 'Editar', edit_meal_path(@meal) %> | 
+<%= link_to 'Remover', @meal, :confirm => 'Tem certeza?', :method => :delete %> | 
+<%= link_to 'Voltar', meals_path %> 

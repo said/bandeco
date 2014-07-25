@@ -1,0 +1,18 @@
+<h1>Campusunits#show</h1>
+<p>Find me in app/views/campusunitunits/show.html.erb</p>
+
+<p id="notice"><%= notice %></p>
+ 
+<p>
+  <b>Nome:</b>
+  <%= @campusunit.name %>
+</p>
+ 
+<p>
+  <b>Endereço:</b>
+  <%= @campusunit.address %>
+</p>
+ 
+<%= link_to 'Editar', edit_campusunit_path(@campusunit) %> | 
+<%= link_to 'Remover', @campusunit, :confirm => 'Tem certeza?', :method => :delete %> | 
+<%= link_to 'Voltar', campusunits_path %>

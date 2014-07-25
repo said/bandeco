@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  campusunit_id: 
+  name: MyString
+  abbreviation: MyString
+
+two:
+  campusunit_id: 
+  name: MyString
+  abbreviation: MyString
