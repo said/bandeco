@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 20140725201539) do
     t.datetime "updated_at"
   end
 
-  add_index "menus", ["meal_id"], name: "index_menus_on_meal_id"
-  add_index "menus", ["restaurant_id"], name: "index_menus_on_restaurant_id"
+  add_index "menus", ["meal_id"], name: "index_menus_on_meal_id", using: :btree
+  add_index "menus", ["restaurant_id"], name: "index_menus_on_restaurant_id", using: :btree
 
   create_table "menuscomments", force: true do |t|
     t.integer  "menu_id"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20140725201539) do
     t.datetime "updated_at"
   end
 
-  add_index "menuscomments", ["menu_id"], name: "index_menuscomments_on_menu_id"
+  add_index "menuscomments", ["menu_id"], name: "index_menuscomments_on_menu_id", using: :btree
 
   create_table "places", force: true do |t|
     t.integer  "placescategory_id"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20140725201539) do
     t.datetime "updated_at"
   end
 
-  add_index "places", ["placescategory_id"], name: "index_places_on_placescategory_id"
+  add_index "places", ["placescategory_id"], name: "index_places_on_placescategory_id", using: :btree
 
   create_table "placescategories", force: true do |t|
     t.integer  "campusunit_id"
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20140725201539) do
     t.datetime "updated_at"
   end
 
-  add_index "placescategories", ["campusunit_id"], name: "index_placescategories_on_campusunit_id"
+  add_index "placescategories", ["campusunit_id"], name: "index_placescategories_on_campusunit_id", using: :btree
 
   create_table "restaurantopeninghours", force: true do |t|
     t.integer  "restaurant_id"
@@ -84,8 +84,8 @@ ActiveRecord::Schema.define(version: 20140725201539) do
     t.datetime "updated_at"
   end
 
-  add_index "restaurantopeninghours", ["meal_id"], name: "index_restaurantopeninghours_on_meal_id"
-  add_index "restaurantopeninghours", ["restaurant_id"], name: "index_restaurantopeninghours_on_restaurant_id"
+  add_index "restaurantopeninghours", ["meal_id"], name: "index_restaurantopeninghours_on_meal_id", using: :btree
+  add_index "restaurantopeninghours", ["restaurant_id"], name: "index_restaurantopeninghours_on_restaurant_id", using: :btree
 
   create_table "restaurants", force: true do |t|
     t.integer  "campusunit_id"
@@ -96,6 +96,20 @@ ActiveRecord::Schema.define(version: 20140725201539) do
     t.datetime "updated_at"
   end
 
-  add_index "restaurants", ["campusunit_id"], name: "index_restaurants_on_campusunit_id"
+  add_index "restaurants", ["campusunit_id"], name: "index_restaurants_on_campusunit_id", using: :btree
+
+  add_foreign_key "menus", "meals", name: "menus_meal_id_fk"
+  add_foreign_key "menus", "restaurants", name: "menus_restaurant_id_fk"
+
+  add_foreign_key "menuscomments", "menus", name: "menuscomments_menu_id_fk"
+
+  add_foreign_key "places", "placescategories", name: "places_placescategory_id_fk"
+
+  add_foreign_key "placescategories", "campusunits", name: "placescategories_campusunit_id_fk"
+
+  add_foreign_key "restaurantopeninghours", "meals", name: "restaurantopeninghours_meal_id_fk"
+  add_foreign_key "restaurantopeninghours", "restaurants", name: "restaurantopeninghours_restaurant_id_fk"
+
+  add_foreign_key "restaurants", "campusunits", name: "restaurants_campusunit_id_fk"
 
 end
