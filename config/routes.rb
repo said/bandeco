@@ -138,6 +138,11 @@ Rails.application.routes.draw do
   resources :placescategories, :path => "categoriaslocal"
   resources :places, :path => "local"
 
+
+  namespace :api, defaults: {format: 'json'}  do
+      resources :campusunits, :path => "campus"
+      resources :meals, :path => "refeicao"
+  end
   # Example resource route with options:
   #   resources :products do
   #     member do
@@ -177,4 +182,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+
 end
