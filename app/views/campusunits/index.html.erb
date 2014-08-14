@@ -1,2 +1,28 @@
-<h1>Campusunits#index</h1>
-<p>Find me in app/views/campusunits/index.html.erb</p>
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading"><h4>Campus</h4></div>
+
+  <table class="table table-striped table-hover" style="width:90%; " align="center" id="tableLevels">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Endereço</th>
+       <!--  <th width="20%"><%#= t '.actions', :default => t("helpers.actions") %></th> -->
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @campusunits.each do |campus| %>
+      <tr>
+        <td><%= campus.name %></td>
+        <td><%= campus.address %></td>
+        <!--  <td><%#= link_to 'Edit', edit_level_path(level) , :class => 'btn btn-xs btn-success'  %>
+                <%#= link_to 'Destroy', level, method: :delete, data: { confirm: 'Are you sure?' } , :class => 'btn btn-xs btn-danger' %>
+              </td> -->
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<hr>
+<%= link_to 'Novo Campus', new_campusunit_path, :class => 'btn btn-xs btn-primary' %>

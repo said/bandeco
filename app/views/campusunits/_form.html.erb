@@ -1,26 +1,33 @@
 <%= form_for(@campusunit) do |f| %>
-	<% if @campusunit.errors.any? %>
-	<div id="explicacao_erro">
-		<h2>Devido a estes <%= pluralize(@campusunit.errors.count, "error") %> 
-			este novo Campus não pode ser salvo:</h2>
-		
-		<ul>
-			<% @campusunit.errors.full_messages.each do |msg| %>
-				<li><%= msg %></li>
-			<% end %>
-		</ul>
+<% if @campusunit.errors.any? %>
+<div id="explicacao_erro">
+	<h2>Devido a estes <%= pluralize(@campusunit.errors.count, "error") %> este novo Campus não pode ser salvo:</h2>
+	<ul>
+		<% @campusunit.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<div class='row' >
+	<div class='col-sm-6' >
+		<div class='form-group'>
+			<%= f.label :Nome %><br />
+			<%= f.text_field :name ,:class => "form-control"  %>
+		</div>
 	</div>
-	<% end %>
-	
-	<div class="campo_form">
-		<%= f.label :name %><br />
-		<%= f.text_field :name %>
+</div>
+<div class='row' >
+	<div class='col-sm-8' >
+		<div class='form-group'>
+			<%= f.label :Endereço %><br />
+			<%= f.text_field :address, :class => "form-control"  %>
+		</div>
 	</div>
-	<div class="campo_form">
-		<%= f.label :address %><br />
-		<%= f.text_field :address %>
-	</div>
-	<div class="botao_enviar">
-		<%= f.submit %>
-	</div>
+</div>
+<div class='row' >
+	<div class='col-sm-6' >
+		<div class='form-group'>
+			<%= f.submit  :class => "btn btn-primary" %>
 <% end %>

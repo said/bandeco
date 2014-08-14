@@ -1,9 +1,5 @@
-<h1>Campusunits#edit</h1>
-<p>Find me in app/views/campusunits/edit.html.erb</p>
-
-Editando Campus
-
+<h1>Editando Campus</h1>
 <%= render 'form' %>
 
-<%= link_to 'Exibir', @campusunit %> |
-<%= link_to 'Voltar', campusunits_path %>
+<%= link_to 'Exibir', @campusunit, :class => 'btn btn-info' %>
+<%= link_to 'Voltar', campusunits_path, :class => 'btn btn-default'  %>
