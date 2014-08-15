@@ -1,9 +1,6 @@
-<h1>Meals#edit</h1>
-<p>Find me in app/views/meals/edit.html.erb</p>
-
-Editando refeições
+<h1>Editando refeições</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Exibir', @meal %> |
-<%= link_to 'Voltar', meals_path %>
+<%= link_to 'Exibir', @meal, :class => 'btn btn-info' %>
+<%= link_to 'Voltar', meals_path, :class => 'btn btn-default' %>
