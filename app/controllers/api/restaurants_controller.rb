@@ -50,9 +50,7 @@ module Api
       if @restaurant.update_attributes(restaurant_params)
         respond_with :no_content
       else
-        form
         respond_with @restaurant.errors
-
       end
     end
 
@@ -68,7 +66,7 @@ module Api
     end
 
     def restaurant_params
-      params.require(:restaurant).permit(:name, :address, :tel)
+      params.require(:restaurant).permit(:campusunit_id, :name, :address, :tel)
     end
 
   end

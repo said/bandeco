@@ -13,6 +13,13 @@
 	<% end %>
 	
 	<div class="campo_form">
+		<%= f.label :campusunit %><br />
+		<% @campusunits.each_with_index do |r, i| %>
+			<%= f.radio_button(:campusunit_id, r.id, :checked => (i == 0 or r.id == @restaurant.campusunit_id)? true:false ) %>
+			<%= r.name %><br /> 
+		<% end %>
+	</div>
+	<div class="campo_form">
 		<%= f.label :name %><br />
 		<%= f.text_field :name %>
 	</div>

@@ -15,10 +15,12 @@ class RestaurantsController < ApplicationController
   end
 
   def new
+    @campusunits = Campusunit.all
     @restaurant = Restaurant.new
   end
 
   def create
+    @campusunits = Campusunit.all
     @restaurant = Restaurant.new(restaurant_params)
     
     if @restaurant.save
@@ -51,7 +53,7 @@ class RestaurantsController < ApplicationController
   end
   
   def restaurant_params
-    params.require(:restaurant).permit(:name, :address, :tel)
+    params.require(:restaurant).permit(:campusunit_id, :name, :address, :tel)
   end
 
 end
