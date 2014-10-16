@@ -15,3 +15,11 @@
  *= require bootstrap.min
  *= require cover 
  */
+
+.campus_selected {
+	color: lightskyblue;
+}
+
+.restaurant_selected {
+	color: coral;
+}

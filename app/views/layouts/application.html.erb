@@ -20,8 +20,8 @@
 
 				<div class="cover-container">
 
-					<div class="masthead clearfix">
-						<div class="inner">
+					<!-- <div class="masthead clearfix"> -->
+						<!-- <div class="inner"> -->
 							<!-- <h3 class="masthead-brand">Bandeco</h3> -->
 							<!-- <div> -->
 								<% @campusunits = Campusunit.all %>
@@ -32,7 +32,11 @@
 											<!-- <li class="active"><a href="#">Home</a></li> -->
 											<% @campusunits.each do |campus| %>
 											<li>
-												<%= link_to campus.name, :controller => "campusunits", :action => "show", :id => campus.id  %>
+												<% if @campusunit and campus.id == @campusunit.id %>
+													<%= link_to campus.name, {:controller => "campusunits", :action => "show", :id => campus.id }, :class => "campus_selected" %>
+												<% else %>
+													<%= link_to campus.name, :controller => "campusunits", :action => "show", :id => campus.id  %>
+												<% end %>
 											</li>
 											<% end %>
 										</ul>
@@ -40,13 +44,17 @@
 								</div>
 								<% end %>
 
-								<% if @restaurants.try(:any?) %>
+								<% if @restaurants %>
 								<div class="navbar">
 									<div class="container">
 										<ul class="nav navbar-nav">
 											<% @restaurants.each do |restaurant| %>
 											<li>
-												<%= link_to restaurant.name, :controller => "restaurants", :action => "show" , :id =>restaurant.id %>
+												<% if @restaurant and restaurant.id == @restaurant.id %>
+													<%= link_to restaurant.name, {:controller => "restaurants", :action => "show" , :id =>restaurant.id }, :class => "restaurant_selected" %>
+												<% else %>
+													<%= link_to restaurant.name, {:controller => "restaurants", :action => "show" , :id =>restaurant.id} %>
+												<% end %>
 											</li>
 											<% end %>
 										</ul>
@@ -55,20 +63,20 @@
 								<% end %>
 
 							<!-- </div> -->
-						</div>
-					</div>
+						<!-- </div> -->
+					<!-- </div> -->
 
 					<div class="inner cover">
 						<%= yield %>
 					</div>
 
-					<div class="mastfoot">
-						<div class="inner">
+					<!-- <div class="mastfoot"> -->
+						<!-- <div class="inner"> -->
 							<p>
 								Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.
 							</p>
-						</div>
-					</div>
+						<!-- </div> -->
+					<!-- </div> -->
 
 				</div>
 

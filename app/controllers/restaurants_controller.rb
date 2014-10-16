@@ -50,6 +50,8 @@ class RestaurantsController < ApplicationController
   
   def set_restaurant
     @restaurant = Restaurant.find(params[:id])
+    @campusunit = Campusunit.find(@restaurant.campusunit_id)
+    @restaurants = Restaurant.where(:campusunit_id => @campusunit.id)
   end
   
   def restaurant_params

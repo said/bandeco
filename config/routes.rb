@@ -130,7 +130,7 @@ Rails.application.routes.draw do
   #   resources :products
 
   resources :campusunits, :path => "campus"
-  resources :restaurants, :path => "bandejao"
+  resources :restaurants, :path => "restaurante"
   resources :restaurantopeninghours, :path => "horariosrestaurante"
   resources :meals, :path => "refeicao"
   resources :menus, :path => "cardapio"
