@@ -23,12 +23,13 @@
           <div class="masthead clearfix">
             <div class="inner">
               <h3 class="masthead-brand">Bandeco</h3>
-              <% @restaurants = Restaurant.all %>
-			  <% if @restaurants.any? %>
+              <% @campusunits = Campusunit.all %>
+			  <% if @campusunits.any? %>
 	              <ul class="nav masthead-nav">
 	              	<!-- <li class="active"><a href="#">Home</a></li> -->
-	              	<% @restaurants.each do |restaurant| %>
-		                <li><a href="/bandejao/<%= restaurant.id %>"><%= restaurant.name %></a></li>
+	              	<% @campusunits.each do |campus| %>
+		                <li><a href="/campus/<%= campus.id %>"><%= campus.name %></a></li>
+		                <!-- <%= link_to "Campus", {:controller => "campusunits", :action => "show", :campusunit => campus.id }%> -->
 		            <% end %>
 	              </ul>
 	          <% end %>
