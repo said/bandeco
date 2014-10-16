@@ -32,9 +32,8 @@
 											<!-- <li class="active"><a href="#">Home</a></li> -->
 											<% @campusunits.each do |campus| %>
 											<li>
-												<a href="/campus/<%= campus.id %>"><%= campus.name %></a>
+												<%= link_to campus.name, :controller => "campusunits", :action => "show", :id => campus.id  %>
 											</li>
-											<!-- <%= link_to campus.name, {:controller => "campusunits", :action => "show", :campusunit => campus.id }%> -->
 											<% end %>
 										</ul>
 									</div>
@@ -47,7 +46,7 @@
 										<ul class="nav navbar-nav">
 											<% @restaurants.each do |restaurant| %>
 											<li>
-												<%= link_to restaurant.name, {:controller => "restaurants", :action => "show", :restaurant => restaurant.id }%>
+												<%= link_to restaurant.name, :controller => "restaurants", :action => "show" , :id =>restaurant.id %>
 											</li>
 											<% end %>
 										</ul>
