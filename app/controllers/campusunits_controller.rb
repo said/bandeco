@@ -44,6 +44,7 @@ class CampusunitsController < ApplicationController
 
   def set_campusunit
     @campusunit = Campusunit.find(params[:id])
+    @restaurants = Restaurant.where(:campusunit_id => @campusunit.id)
   end
 
   def campusunit_params
